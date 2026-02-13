@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+tensor/
+
+# Jupyter
+.ipynb_checkpoints
+
+# Secrets (CRITICAL!)
+.env
+*.env
+!.env.example
+
+# Personal data
+data/cv_*.pdf
+data/*_Strzelec.pdf
+
+# Temporary/Generated files
+temp_*
+data/last_update.txt
+data/muse_jobs.json
+notebooks/*.csv
+
+# Azure
+.azure/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

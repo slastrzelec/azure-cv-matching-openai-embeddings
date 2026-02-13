@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "title": "Senior Machine Learning Engineer",
+    "company": "TechCorp",
+    "description": "Senior ML Engineer position focused on predictive modeling and time series forecasting. Work with Python, PyTorch, scikit-learn on production ML systems. Build ETL pipelines, feature engineering, hyperparameter tuning (GridSearchCV). Deploy models using MLflow, Docker, AWS SageMaker. Time series: Prophet, ARIMA, anomaly detection. Metrics: RMSE, MAE, F1, AUC. Tools: Jupyter, pandas, NumPy, Git, SQL. Collaborate in Agile teams, 5+ years experience.",
+    "requirements": "Python, PyTorch, scikit-learn, time series forecasting, MLflow, Docker, AWS SageMaker, SQL, Git",
+    "location": "Kraków, Poland",
+    "salary": "15000-25000 PLN",
+    "link": "https://justjoin.it/offers/techcorp-senior-ml-engineer"
+  },
+  {
+    "id": 2,
+    "title": "Data Scientist",
+    "company": "FinanceAI",
+    "description": "Data Scientist for business intelligence and statistical analysis. Python, SQL, Tableau for reporting and dashboards. Statistical modeling, regression, clustering. ETL processes, data cleaning, EDA. No deep learning required - focus on business metrics. Tools: pandas, Matplotlib, Excel.",
+    "requirements": "Python, SQL, Tableau, statistics, regression, clustering, pandas, Excel",
+    "location": "Warsaw, Poland",
+    "salary": "12000-18000 PLN",
+    "link": "https://nofluffjobs.com/pl/job/data-scientist-financeai"
+  },
+  {
+    "id": 3,
+    "title": "Python Backend Developer",
+    "company": "WebDev Inc",
+    "description": "Backend developer for web applications. Django, Flask, REST APIs, PostgreSQL. Docker, Git, CI/CD pipelines. No ML/AI - pure backend engineering. Microservices architecture.",
+    "requirements": "Python, Django, Flask, REST API, PostgreSQL, Docker, Git",
+    "location": "Remote",
+    "salary": "10000-16000 PLN",
+    "link": "https://bulldogjob.pl/companies/jobs/python-backend-developer-webdev"
+  },
+  {
+    "id": 4,
+    "title": "AI Research Engineer",
+    "company": "DeepMind Clone",
+    "description": "Research ML Engineer position. PyTorch, TensorFlow, transformers, NLP. Deep learning research, publishing papers. PhD or MSc required. Cutting-edge AI, not production systems. Experimentation focus.",
+    "requirements": "PyTorch, TensorFlow, transformers, NLP, research, PhD/MSc",
+    "location": "London, UK",
+    "salary": "£60000-90000",
+    "link": "https://deepmindclone.ai/careers/research-engineer"
+  },
+  {
+    "id": 5,
+    "title": "Junior Python Developer",
+    "company": "StartupXYZ",
+    "description": "Entry-level Python position. Learn basics: Python syntax, Git, simple scripts. No ML, no advanced topics. Training provided.",
+    "requirements": "Python basics, willingness to learn, Git",
+    "location": "Gdańsk, Poland",
+    "salary": "6000-9000 PLN",
+    "link": "https://pracuj.pl/praca/junior-python-developer-startupxyz"
+  },
+  {
+    "id": 6,
+    "title": "MLOps Engineer",
+    "company": "CloudML Solutions",
+    "description": "MLOps Engineer to deploy and maintain ML systems in production. Kubernetes, Docker, AWS/Azure, CI/CD for ML. MLflow, model monitoring, A/B testing. Python, Airflow, Terraform. DevOps background preferred.",
+    "requirements": "Python, Docker, Kubernetes, AWS, MLflow, CI/CD, Airflow, DevOps",
+    "location": "Remote (EU)",
+    "salary": "€50000-75000",
+    "link": "https://linkedin.com/jobs/mlops-engineer-cloudml"
+  },
+  {
+    "id": 7,
+    "title": "Computer Vision Engineer",
+    "company": "VisionTech",
+    "description": "CV Engineer for object detection and image segmentation projects. PyTorch, YOLO, Detectron2, OpenCV. Real-time inference, edge deployment. Experience with CNNs, transfer learning.",
+    "requirements": "PyTorch, Computer Vision, YOLO, OpenCV, CNNs, object detection",
+    "location": "Wrocław, Poland",
+    "salary": "14000-22000 PLN",
+    "link": "https://justjoin.it/offers/visiontech-cv-engineer"
+  },
+  {
+    "id": 8,
+    "title": "NLP Engineer",
+    "company": "LangAI",
+    "description": "NLP Engineer for chatbots and text analysis. Transformers, BERT, GPT, spaCy, Hugging Face. Polish language processing. LLM fine-tuning, RAG systems.",
+    "requirements": "Python, NLP, transformers, BERT, Hugging Face, LLMs, spaCy",
+    "location": "Poznań, Poland",
+    "salary": "13000-20000 PLN",
+    "link": "https://nofluffjobs.com/pl/job/nlp-engineer-langai"
+  },
+  {
+    "id": 9,
+    "title": "Business Intelligence Analyst",
+    "company": "DataCorp",
+    "description": "BI Analyst creating dashboards and reports. Power BI, Tableau, SQL. No programming required. Excel expert. Stakeholder communication.",
+    "requirements": "SQL, Power BI, Tableau, Excel, business analysis",
+    "location": "Warsaw, Poland",
+    "salary": "8000-13000 PLN",
+    "link": "https://pracuj.pl/praca/bi-analyst-datacorp"
+  },
+  {
+    "id": 10,
+    "title": "Full Stack Data Scientist",
+    "company": "AI Startup",
+    "description": "Data Scientist with full-stack skills. Build ML models AND deploy them as web apps. Python, scikit-learn, FastAPI, React basics. Startup environment, wear many hats.",
+    "requirements": "Python, scikit-learn, ML, FastAPI, React, full-stack, startup",
+    "location": "Remote (Poland)",
+    "salary": "11000-17000 PLN",
+    "link": "https://justjoin.it/offers/ai-startup-fullstack-ds"
+  }
+]

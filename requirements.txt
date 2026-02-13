@@ -1,0 +1,25 @@
+# PDF Processing
+PyPDF2==3.0.1
+pdfplumber==0.11.9
+
+# OpenAI & Embeddings
+openai==1.12.0
+python-dotenv==1.0.0
+
+# Machine Learning
+numpy==1.24.3
+scikit-learn==1.3.2
+
+# Streamlit
+streamlit==1.31.0
+
+# Data handling
+pandas==2.1.3
+
+# Azure Cloud Storage
+azure-storage-blob==12.19.0
+azure-identity==1.15.0
+
+# HTTP requests
+requests==2.31.0
+
