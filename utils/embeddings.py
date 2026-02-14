@@ -95,16 +95,16 @@ def extract_skills_with_ai(cv_text, model="gpt-4o-mini", client=None):
         
         # Prompt dla ekstrakcji
         extraction_prompt = f"""
-Przeanalizuj poniższe CV i wyciągnij TYLKO najważniejsze umiejętności techniczne.
+Analyze the CV below and extract ONLY the most important technical skills.
 
-Format odpowiedzi: lista umiejętności oddzielona przecinkami, bez dodatkowych wyjaśnień.
+Response format: comma-separated list of skills, no additional explanations.
 
-Przykład: Python, PyTorch, scikit-learn, time series forecasting, MLflow, Docker, AWS SageMaker
+Example: Python, PyTorch, scikit-learn, time series forecasting, MLflow, Docker, AWS SageMaker
 
 CV:
 {cv_text}
 
-Umiejętności:
+Skills:
 """
         
         # Wywołaj API
@@ -193,18 +193,18 @@ def get_similarity_rating(similarity):
     Example:
         >>> emoji, rating, color = get_similarity_rating(0.65)
         >>> print(f"{emoji} {rating}")
-        '🟠 Średnie dopasowanie'
+        '🟢 Excellent match'
     """
     similarity_pct = similarity * 100
     
     if similarity_pct > 60:
-        return "🟢", "Świetne dopasowanie", "green"
+        return "🟢", "Excellent match", "green"
     elif similarity_pct > 50:
-        return "🟠", "Dobre dopasowanie", "orange"
+        return "🟠", "Good match", "orange"
     elif similarity_pct > 40:
-        return "🟡", "Średnie dopasowanie", "yellow"
+        return "🟡", "Average match", "yellow"
     else:
-        return "🔴", "Słabe dopasowanie", "red"
+        return "🔴", "Poor match", "red"
 
 
 # Funkcja pomocnicza do testowania modułu
