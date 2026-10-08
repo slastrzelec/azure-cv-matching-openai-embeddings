@@ -35,3 +35,8 @@ notebooks/*.csv
 .idea/
 *.swp
 *.swo
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.venv/
+antenv/
