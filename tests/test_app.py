@@ -16,7 +16,6 @@ def workdir(tmp_path, monkeypatch):
     shutil.copy(ROOT / "data" / "sample_jobs.json", tmp_path / "data" / "sample_jobs.json")
     monkeypatch.chdir(tmp_path)
     monkeypatch.setenv("PYTHONPATH", str(ROOT))
-    monkeypatch.delenv("CV_STORAGE_ENABLED", raising=False)
     monkeypatch.delenv("OPENAI_API_KEY", raising=False)
     st.cache_data.clear()  # the embedding cache is process-wide
     return tmp_path
@@ -41,17 +40,10 @@ def test_renders_with_sample_offers_and_privacy_notice(workdir):
     assert "fictional sample offers" in text
 
 
-def test_no_recent_cv_list_and_no_storage_checkbox_by_default(workdir):
+def test_no_recent_cv_list_and_no_storage_option(workdir):
     at = run_app()
     assert "Recent CVs" not in all_text(at)
     assert len(at.checkbox) == 0
-
-
-def test_storage_checkbox_appears_only_when_enabled_and_defaults_off(workdir, monkeypatch):
-    monkeypatch.setenv("CV_STORAGE_ENABLED", "true")
-    monkeypatch.setenv("AZURE_STORAGE_CONNECTION_STRING", "UseDevelopmentStorage=true")
-    at = run_app()
-    assert len(at.checkbox) == 1 and at.checkbox[0].value is False
 
 
 def test_cached_real_offers_replace_sample(workdir):

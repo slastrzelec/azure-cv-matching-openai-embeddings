@@ -47,3 +47,13 @@ def test_tracked_notebooks_have_no_personal_data_in_outputs():
 def test_app_has_no_temp_files_or_recent_cv_list():
     code = (ROOT / "app.py").read_text() + "".join(p.read_text() for p in (ROOT / "utils").glob("*.py"))
     assert "Recent CVs" not in code and "temp_" not in code
+
+
+def test_cv_is_never_stored_and_no_cloud_storage_code():
+    """The app keeps the CV in memory only: no storage module, no cloud-storage dependency or settings."""
+    assert not (ROOT / "utils" / "azure_storage.py").exists()
+    scanned = [ROOT / "app.py", ROOT / "requirements.txt", ROOT / "requirements-dev.txt", ROOT / ".env.example"]
+    scanned += list((ROOT / "utils").glob("*.py")) + list((ROOT / ".github").rglob("*.yml"))
+    text = "\n".join(p.read_text(encoding="utf-8").lower() for p in scanned if p.exists())
+    for forbidden in ("azure", "blob", "cv_storage", "upload_cv"):
+        assert forbidden not in text, forbidden

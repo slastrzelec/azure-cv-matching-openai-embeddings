@@ -4,13 +4,11 @@ from __future__ import annotations
 
 import hashlib
 import io
-import os
 from datetime import datetime
 
 import streamlit as st
 from dotenv import load_dotenv
 
-from utils import azure_storage
 from utils.embeddings import (
     EMBEDDING_MODELS,
     EmbeddingError,
@@ -55,7 +53,6 @@ st.markdown(
 st.info(
     "**Privacy:** the text of your CV is sent to OpenAI (skills extraction and embeddings). "
     "The PDF is processed in memory and is **not stored**."
-    + (" Optional storage is configured on this deployment; it only happens if you tick the box below." if azure_storage.is_enabled() else "")
 )
 
 # ---------------------------------------------------------------- job database
@@ -97,15 +94,6 @@ with st.sidebar:
     pdf_method = st.selectbox("PDF extraction", METHODS)
     top_n = st.slider("Offers to show", 3, 20, 10)
 
-    store_cv = False
-    if azure_storage.is_enabled():
-        st.markdown("---")
-        store_cv = st.checkbox(
-            "Allow storing my CV file in the owner's Azure storage",
-            value=False,
-            help="Off by default. The file is stored under a random name.",
-        )
-
     st.markdown("---")
     st.markdown(
         "**Score guide** (heuristic, not calibrated):\n\n"
@@ -127,8 +115,6 @@ if uploaded is not None:
             st.session_state.cv_skills = None
             st.session_state.results = None
             st.success(f"Text extracted: {len(text)} characters")
-            if store_cv and azure_storage.upload_cv(data):
-                st.caption("CV file stored as you allowed.")
         else:
             st.error("Could not extract text (is the PDF a scan without a text layer?).")
 
@@ -195,4 +181,4 @@ if st.session_state.results:
                 st.markdown(f"[Open offer]({link})")
         st.markdown("---")
 
-st.caption("OpenAI embeddings and GPT-4o-mini · The Muse API · Streamlit" + (" · optional Azure Blob Storage" if os.getenv("CV_STORAGE_ENABLED") else ""))
+st.caption("OpenAI embeddings and GPT-4o-mini · The Muse API · Streamlit")

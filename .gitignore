@@ -27,8 +27,6 @@ data/last_update.txt
 data/muse_jobs.json
 notebooks/*.csv
 
-# Azure
-.azure/
 
 # IDE
 .vscode/

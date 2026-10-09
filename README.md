@@ -9,6 +9,9 @@ cosine similarity. Offers come from The Muse public API.
 **Live demo:** https://cv-matching-openai-embeddings.streamlit.app/ (Streamlit Community Cloud, may need a
 click to wake up). **Portfolio page:** https://slastrzelec.github.io/portfolio/18_cv-matching-openai-embeddings/
 
+![Ranked offers with match scores](assets/app_results.png)
+*Ranking of the bundled fictional sample offers for one CV. Scores are cosine similarities of OpenAI embeddings; the bands (60/50/40 %) are heuristic.*
+
 > This is a demonstration of an embedding pipeline, **not a validated recommender**. There is no labelled data,
 > so match quality has not been measured. The 60/50/40 % score bands are heuristic.
 
@@ -19,7 +22,7 @@ click to wake up). **Portfolio page:** https://slastrzelec.github.io/portfolio/1
 | Upload | the PDF is read in memory (5 MB, first 10 pages); it is never written to disk |
 | Skills extraction | the CV text (max 20,000 characters) is **sent to OpenAI** |
 | Matching | only the short skills summary is embedded and sent to OpenAI |
-| Storage | **nothing is stored by default.** Optional Azure Blob storage exists for deployments that set `CV_STORAGE_ENABLED=true`; even then the visitor must tick a consent box, the blob gets a random name, and there is no listing of stored CVs |
+| Storage | **nothing is stored.** The app has no storage code and no cloud-storage dependency |
 
 ## Features
 
@@ -40,8 +43,8 @@ streamlit run app.py
 
 ## Testing
 
-**40 automated tests** (pytest) plus 2 repository checks that run only in a git checkout. They run without an
-API key, without network and without an Azure account: OpenAI is replaced by a deterministic fake client.
+**38 automated tests** (pytest; 2 of them need a git checkout and are skipped otherwise). They run without an
+API key and without network: OpenAI is replaced by a deterministic fake client.
 
 ```bash
 pip install -r requirements-dev.txt
@@ -60,35 +63,24 @@ What is verified:
 - **Job data:** HTML stripped, Muse payload formatted, duplicates removed, network errors tolerated, `javascript:`
   links dropped, cache/sample fallback without network.
 - **CSV export:** formula-injection cells neutralised.
-- **Privacy rules:** storage is off unless explicitly enabled, blob names never contain the user's file name,
-  there is no function that lists stored CVs, no "Recent CVs" in the UI.
+- **Privacy rules:** no "Recent CVs" in the UI, no storage option, and no storage module or cloud-storage
+  dependency in code, requirements, workflows or settings.
 - **App:** Streamlit `AppTest` runs the whole script (sample offers, privacy notice, matching end to end with the fake
   client, and "no ranking on embedding failure").
 - **Repository hygiene:** no `.env`, PDF or generated job files tracked; no e-mail or phone number in tracked
   notebook outputs.
 
-Not covered: the real OpenAI and The Muse APIs, match quality (no ground truth), the Azure deployment itself,
-and uploading a file through the browser widget. The Azure deploy workflow also runs the tests first and deploys only if
-they pass.
-
-## Deployment
-
-The public demo runs on **Streamlit Community Cloud** (`OPENAI_API_KEY` as a secret).
-
-`.github/workflows/main_azure-cv-matching-openai-embeddings.yml` builds and deploys to an Azure App Service
-(`startup.sh` listens on `$PORT`, default 8000). It is **manual-only (`workflow_dispatch`) and currently not
-active**: the last run failed at the Azure login step (*No subscriptions found*), so the app is not deployed
-on Azure at the moment. The workflow, `startup.sh` and the optional Blob Storage module are kept as a reference
-for that setup.
+Not covered: the real OpenAI and The Muse APIs, match quality (no ground truth), and uploading a file through
+the browser widget. GitHub Actions runs the tests and `ruff` on every push and pull request.
 
 ## Repository layout
 
 ```
 app.py                 Streamlit UI
+assets/                README screenshot
 utils/embeddings.py    batching, cosine similarity, ranking, skills extraction
 utils/jobs.py          The Muse client, cache, CSV export
 utils/pdf_handler.py   PDF text extraction
-utils/azure_storage.py optional, opt-in CV storage
 data/sample_jobs.json  fictional sample offers
 notebooks/             exploration (outputs stripped; they may have contained personal data)
 SPEC.md                requirements and data-security rules for this release
