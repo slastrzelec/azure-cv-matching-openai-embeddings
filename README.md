@@ -7,7 +7,7 @@ Streamlit app that ranks job offers against a CV. The CV is condensed into a sho
 cosine similarity. Offers come from The Muse public API.
 
 **Live demo:** https://cv-matching-openai-embeddings.streamlit.app/ (Streamlit Community Cloud, may need a
-click to wake up). **Portfolio page:** https://slastrzelec.github.io/portfolio/18_cv-matching-openai-embeddings/
+click to wake up). **Portfolio page:** https://slastrzelec.github.io/portfolio/cv-job-matcher/
 
 ![Ranked offers with match scores](assets/app_results.png)
 *Ranking of the bundled fictional sample offers for one CV. Scores are cosine similarities of OpenAI embeddings; the bands (60/50/40 %) are heuristic.*
