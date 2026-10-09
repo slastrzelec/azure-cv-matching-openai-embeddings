@@ -1,6 +1,6 @@
 # CV Job Matcher
 
-[![build and deploy](https://github.com/slastrzelec/-azure-cv-matching-openai-embeddings/actions/workflows/main_azure-cv-matching-openai-embeddings.yml/badge.svg)](https://github.com/slastrzelec/-azure-cv-matching-openai-embeddings/actions)
+[![tests](https://github.com/slastrzelec/azure-cv-matching-openai-embeddings/actions/workflows/ci.yml/badge.svg)](https://github.com/slastrzelec/azure-cv-matching-openai-embeddings/actions/workflows/ci.yml)
 
 Streamlit app that ranks job offers against a CV. The CV is condensed into a short skills list by an LLM
 (`gpt-4o-mini`), skills and offers are embedded (`text-embedding-3-small/large`), and offers are ranked by
@@ -27,7 +27,7 @@ click to wake up). **Portfolio page:** https://slastrzelec.github.io/portfolio/1
 - Skills condensation with `gpt-4o-mini`
 - Batched embeddings (up to 100 texts per request), cached for one hour per offer set
 - Ranking by cosine similarity; if any embedding request fails, no ranking is shown
-- Live offers from The Muse API (*Refresh DB*); the first start uses 5 bundled **fictional** sample offers
+- Live offers from The Muse API (*Refresh DB*); the first start uses 10 bundled **fictional** sample offers
 - CSV export (cells that could be interpreted as spreadsheet formulas are neutralised)
 
 ## Run locally
@@ -68,13 +68,18 @@ What is verified:
   notebook outputs.
 
 Not covered: the real OpenAI and The Muse APIs, match quality (no ground truth), the Azure deployment itself,
-and uploading a file through the browser widget. The deploy workflow runs the tests first and deploys only if
+and uploading a file through the browser widget. The Azure deploy workflow also runs the tests first and deploys only if
 they pass.
 
 ## Deployment
 
+The public demo runs on **Streamlit Community Cloud** (`OPENAI_API_KEY` as a secret).
+
 `.github/workflows/main_azure-cv-matching-openai-embeddings.yml` builds and deploys to an Azure App Service
-(`startup.sh` listens on `$PORT`, default 8000). The public demo above runs on Streamlit Community Cloud.
+(`startup.sh` listens on `$PORT`, default 8000). It is **manual-only (`workflow_dispatch`) and currently not
+active**: the last run failed at the Azure login step (*No subscriptions found*), so the app is not deployed
+on Azure at the moment. The workflow, `startup.sh` and the optional Blob Storage module are kept as a reference
+for that setup.
 
 ## Repository layout
 
